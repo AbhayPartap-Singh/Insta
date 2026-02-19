@@ -8,5 +8,5 @@ const identifyUser = require("../midleware/auth.midleware")
 postRouter.post("/",upload.single("image"),identifyUser,postcontroller.createPostController)
 postRouter.get("/",identifyUser,postcontroller.getPostController)
 postRouter.get("/details/:postid",identifyUser,postcontroller.getPostDetailscontroller)
-
+postRouter.post("/like/:postId",identifyUser,postcontroller.likePostControler)
 module.exports = postRouter

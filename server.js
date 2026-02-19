@@ -1,7 +1,6 @@
 require("dotenv").config()
-const app = require("./Backend/src/app")
-const ConnectToDb = require("./Backend/src/config/database")
-
+const app = require("./src/app")
+const ConnectToDb = require("./src/config/database")
 ConnectToDb()
 
 app.listen(3000,()=>{

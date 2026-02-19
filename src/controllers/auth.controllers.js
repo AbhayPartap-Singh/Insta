@@ -48,7 +48,8 @@ const user = userModel.create({
 })
 
 const token = jwt.sign({
-    id:user._id
+    id:user._id,
+    username:user.username
 },process.env.JWT_SECRET)
 
 res.cookie("jwt_token",token)
@@ -95,7 +96,8 @@ function loginController(){async (req,res)=>{
     })
    }
    const token = jwt.sign({
-    id:user._id
+    id:user._id ,
+    username:user.username
      },process.env.JWT_SECRET,
      {expiresIn:'1d'})
      res.cookie ("token",token)
