@@ -1,22 +1,22 @@
-import React,{useState} from 'react'
+import React,{use, useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import "../../../style/form.scss";
+import { useAuth } from '../hooks/useAuth';
+import "../style/form.scss";
 const Login = () => {
   const [username,setusername] = useState("")
   const [password,setpassword] = useState("")
 
+  const {login} = useAuth()
+
   async function handleevent(e){
     e.preventDefault()
-     axios.post("http://localhost:3000/api/auth/login",{
-      username,
-      password
-     },{
-      withCredentials:true
-     })
-     .then(res=>{res.data})
-
-
+    
+   handlelogin(username,password)
+   .then(res=>{
+    console.log(res.data)
+    login(res.data.token)
+   })
   }
   return (
     <div className='form-container'>
